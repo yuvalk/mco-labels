@@ -1,0 +1,17 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  name: rwn-extralabels
+  labels:
+    machineconfiguration.openshift.io/role: worker-rwn
+spec:
+  config:
+    ignition:
+      version: 3.1.0
+    storage:
+      files:
+      - contents:
+        filesystem: root
+        mode: 420
+        path: /etc/systemd/system/kubelet.service.d/20-extralabels.conf
+        source: data:text/plain;charset=utf8;base64,W1NlcnZpY2VdCiAgICBFbnZpcm9ubWVudD0iRklSU1RfQk9PVF9PTkxZX0tVQkVMRVRfTk9ERV9FWFRSQV9MQUJFTFM9bm9kZS5rdWJlcm5ldGVzLmlvL3JvbGU9cnduIgoK
